@@ -37,6 +37,10 @@
             android:enabled="true"
             android:exported="true">
         </service>
+        <service android:name=".DataService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
         <activity
             android:name=".MainActivity"
             android:exported="true">
