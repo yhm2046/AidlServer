@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * 数据服务器类
+ * 服务端主动轮询,发送数据
  */
 public class DataService extends Service {
     private static final String TAG = "server-DataService:xwg";

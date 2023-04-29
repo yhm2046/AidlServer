@@ -33,7 +33,7 @@
                 <action android:name="com.example.timerservice.action" />
             </intent-filter>
         </service>
-        <service android:name=".DataService"
+        <service android:name=".DataServiceNoPolling"
             android:enabled="true"
             android:exported="true">
         </service>
