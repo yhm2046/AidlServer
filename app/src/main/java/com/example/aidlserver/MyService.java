@@ -4,10 +4,14 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.util.Log;
 
 import java.security.SecureRandom;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MyService extends Service {
+    private static final String TAG = "MyService:xwg";
     public MyService() {
     }
 
@@ -18,7 +22,7 @@ public class MyService extends Service {
      */
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
+        Log.i(TAG,"onBind..");
        return new MyBinder();
     }
     class MyBinder extends IMyAidlInterface.Stub{
@@ -49,7 +53,30 @@ public class MyService extends Service {
                 sb.append(chaStr.charAt(random.nextInt(chaStr.length())));
             }return sb.toString();
         }
+//每隔2s发送485设备信息
+        @Override
+        public String sendMessage(){
+            long countMsg = System.currentTimeMillis();
+//            Timer timer = new Timer();
+//            timer.scheduleAtFixedRate(new TimerTask() {
+//                @Override
+//                public void run() {
+//                    Log.i(TAG,"System.currentTimeMillis():" + System.currentTimeMillis());
+//                }
+//            }, 0, 2 * 1000);
+            return "send msg :" + countMsg;
+        }//sendMessage
 
-
+        private String scheduled485Message(){
+            long date485msg = System.currentTimeMillis();
+            Timer timer = new Timer();
+            timer.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    Log.i(TAG,"send 485 msg:" + System.currentTimeMillis());
+                }
+            }, 0, 2 * 1000);
+            return "";
+        }
     }
 }

@@ -10,11 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AidlServer">
         <service
+            android:name=".TimerServiceTest"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.timeservice.test.action" />
+            </intent-filter>
+        </service>
+        <service
             android:name=".MyService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.example.service.action"/>
+                <action android:name="com.example.service.action" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".TimerService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.timerservice.action" />
             </intent-filter>
         </service>
 
